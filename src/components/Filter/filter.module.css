@@ -1,0 +1,19 @@
+.label {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin-bottom: 20px;
+  }
+  
+  .input {
+    margin-top: 8px;
+    height: 20px;
+    border: 1px solid black;
+  }
+  
+  .input:hover,
+  input:focus {
+    box-shadow: 0 0 6px 2px rgb(28 146 224 / 50%);
+    border: 1px solid rgba(4, 0, 255, 0.9);
+  }
+  

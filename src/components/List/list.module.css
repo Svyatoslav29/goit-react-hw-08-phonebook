@@ -1,0 +1,29 @@
+.item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .list {
+    padding-inline-start: 0px;
+  }
+  .text {
+    margin-right: 15px;
+  
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .button {
+    width: fit-content;
+    background-color: white;
+    border: 0.5px solid black;
+    border-radius: 4px;
+    height: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .button:hover {
+    background-color: rgba(4, 0, 255, 0.9);
+    color: white;
+    border: transparent;
+  }
+  
