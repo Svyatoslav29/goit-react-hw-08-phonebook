@@ -14,15 +14,14 @@
   }
   .button {
     width: fit-content;
-    background-color: white;
+    background-color: rgb(255, 112, 112);
     border: 0.5px solid black;
     border-radius: 4px;
     height: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
   
   .button:hover {
-    background-color: rgba(4, 0, 255, 0.9);
+    background-color: rgb(255, 0, 0);
     color: white;
     border: transparent;
   }

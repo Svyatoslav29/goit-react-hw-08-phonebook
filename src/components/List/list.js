@@ -31,7 +31,6 @@ ContactList.propTypes = {
       id: PropTypes.string,
     })
   ),
-
   deleteContact: PropTypes.func,
 };
 

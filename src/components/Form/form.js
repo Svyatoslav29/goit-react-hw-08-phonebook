@@ -1,40 +1,42 @@
 import s from "./form.module.css";
 import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
-import { Component } from "react";
+import { useState } from "react";
 
-class ContactForm extends Component {
-  state = {
-    name: "",
-    number: "",
-  };
+function ContactForm({formSubmit}) {
+ 
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
+  const nameId = uuidv4();
+  const numberId = uuidv4();
 
-  nameId = uuidv4();
-  numberId = uuidv4();
-
-  handleSubmit = (evt) => {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
-    const { name, number } = this.state;
-    const { resetForm } = this;
     const contact = { id: uuidv4(), name, number };
-    this.props.formSubmit(contact);
+    formSubmit(contact);
     resetForm();
   };
 
-  inputChange = (evt) => {
-    const { name, value } = evt.target;
-    this.setState({
-      [name]: value,
-    });
+  const inputChange = (evt) => {
+    switch(evt.target.name) {
+      case 'name':
+        setName(evt.target.value);
+        break;
+
+      case 'number':
+        setNumber(evt.target.value);
+        break;
+        
+      default:
+        return;  
+    }
   };
 
-  resetForm = () => {
-    this.setState({ name: "", number: "" });
+  const resetForm = () => {
+    setName('');
+    setNumber('');
   };
 
-  render() {
-    const { handleSubmit, inputChange, nameId, numberId } = this;
-    const { name, number } = this.state;
     return (
       <div className={s.formWrapper}>
         <form className={s.form} onSubmit={handleSubmit}>
@@ -70,7 +72,7 @@ class ContactForm extends Component {
       </div>
     );
   }
-}
+
 
 ContactForm.propTypes = {
   name: PropTypes.string,
