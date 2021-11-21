@@ -1,20 +1,31 @@
 import s from "./form.module.css";
 import PropTypes from "prop-types";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
-
-function ContactForm({formSubmit}) {
+import actions from "../redux/actions";
+import { useSelector, useDispatch } from "react-redux";
+import { getContacts } from "../redux/selector";
+function ContactForm() {
  
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const nameId = uuidv4();
-  const numberId = uuidv4();
+  const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    const contact = { id: uuidv4(), name, number };
-    formSubmit(contact);
+    if (contacts.find(
+      (contact) => contact.name.toLowerCase() === name.toLocaleLowerCase()
+    )) {
+      return alert("This contact has already been added to the list");
+  }
+    dispatch(actions.addContacts({ name, number }));
     resetForm();
+  };
+
+  const resetForm = () => {
+    setName('');
+    setNumber('');
   };
 
   const inputChange = (evt) => {
@@ -32,18 +43,12 @@ function ContactForm({formSubmit}) {
     }
   };
 
-  const resetForm = () => {
-    setName('');
-    setNumber('');
-  };
-
     return (
       <div className={s.formWrapper}>
         <form className={s.form} onSubmit={handleSubmit}>
-          <label className={s.label} htmlFor={nameId}>
+          <label className={s.label}>
             Name
             <input
-              id={nameId}
               className={s.input}
               value={name}
               type="text"
@@ -54,10 +59,9 @@ function ContactForm({formSubmit}) {
             />
           </label>
 
-          <label className={s.label} htmlFor={numberId}>
+          <label className={s.label}>
             Number
             <input
-              id={numberId}
               className={s.input}
               type="tel"
               value={number}
@@ -77,12 +81,7 @@ function ContactForm({formSubmit}) {
 ContactForm.propTypes = {
   name: PropTypes.string,
   number: PropTypes.number,
-
-  nameId: PropTypes.number,
-  numberId: PropTypes.number,
-
   handleSubmit: PropTypes.func,
-  formSubmit: PropTypes.func,
   inputChange: PropTypes.func,
 };
 
