@@ -8,9 +8,6 @@ function Filter() {
 
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
-  const onFilterChange = e => {
-    dispatch(actions.filterContact(e.currentTarget.value))
-  }
 
   return (
     <label className={s.label}>
@@ -20,14 +17,13 @@ function Filter() {
         type="text"
         name="name"
         value={filter}
-        onChange={onFilterChange}
+         onChange={(e) => dispatch(actions.filterChange(e.target.value))} 
       />
     </label>
   );
 }
 
 Filter.propTypes = {
-  // onFilterChange: PropTypes.func,
   filter: PropTypes.string,
 };
 
