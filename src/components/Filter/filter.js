@@ -1,6 +1,6 @@
 import s from "./filter.module.css";
 import PropTypes from "prop-types";
-import actions from "../redux/actions";
+import filterChange from "../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { getFilter } from "../redux/selector";
 
@@ -17,7 +17,7 @@ function Filter() {
         type="text"
         name="name"
         value={filter}
-         onChange={(e) => dispatch(actions.filterChange(e.target.value))} 
+         onChange={(e) => dispatch(filterChange(e.target.value))} 
       />
     </label>
   );

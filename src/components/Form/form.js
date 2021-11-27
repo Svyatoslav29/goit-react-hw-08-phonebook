@@ -1,10 +1,10 @@
 import s from "./form.module.css";
 import PropTypes from "prop-types";
-// import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
-import actions from "../redux/actions";
+import operations from "../redux/operations";
 import { useSelector, useDispatch } from "react-redux";
 import { getContacts } from "../redux/selector";
+
 function ContactForm() {
  
   const [name, setName] = useState('');
@@ -19,7 +19,7 @@ function ContactForm() {
     )) {
       return alert("This contact has already been added to the list");
   }
-    dispatch(actions.addContacts({ name, number }));
+    dispatch(operations.addContacts({ name, number }));
     resetForm();
   };
 

@@ -1,8 +1,8 @@
 import s from "./list.module.css";
 import PropTypes from "prop-types";
-import actions from "../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { allFilteredContacts } from "../redux/selector";
+import operations from "../redux/operations";
 
 function ContactList() {
   const getContacts = useSelector(allFilteredContacts);
@@ -19,7 +19,7 @@ function ContactList() {
               <button
                 className={s.button}
                 type="button"
-                onClick={() => dispatch(actions.deleteContacts(id))}
+                onClick={() => dispatch(operations.deleteContacts(id))}
               >
                 Delete
             </button>
