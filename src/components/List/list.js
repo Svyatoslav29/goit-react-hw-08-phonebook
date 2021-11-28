@@ -2,11 +2,16 @@ import s from "./list.module.css";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import { allFilteredContacts } from "../redux/selector";
+import { useEffect } from "react";
 import operations from "../redux/operations";
 
-function ContactList() {
+const ContactList = () => {
   const getContacts = useSelector(allFilteredContacts);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(operations.fetchContacts());
+  }, [dispatch]);
 
   return (
     <div className={s.listWrapper}>
@@ -30,6 +35,7 @@ function ContactList() {
     </div>
   );
 };
+
 
 ContactList.propTypes = {
   getContacts: PropTypes.arrayOf(
