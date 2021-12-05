@@ -24,7 +24,7 @@ const styles = makeStyles(theme => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%', 
     marginTop: theme.spacing(3),
   },
   submit: {
@@ -40,21 +40,23 @@ class RegisterPage extends Component {
   };
 
   handleChange = ({ target: { name, value } }) => {
-    console.log(name, value);
+    // console.log(name, value);
     this.setState({ [name]: value });
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(event);
+    if (this.state.email.trim() === '' || this.state.password.trim() === '' || this.state.password.length < 7 || this.state.name.trim() === ''){
+            alert('Please, fill in all the fields correctly, also your password should be at least 7 characters ')
+            return
+    }
+    
     this.props.onRegister(this.state);
 
     this.setState({ name: '', email: '', password: '' });
   };
   render() {
     const { name, email, password } = this.state;
-
-    // const classes = useStyles();
 
     return (
       <Container component="main" maxWidth="xs">

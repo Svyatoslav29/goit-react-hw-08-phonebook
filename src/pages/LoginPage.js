@@ -11,6 +11,7 @@ import Container from '@material-ui/core/Container';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { authOperations } from '../redux/auth';
+// import { toast } from "react-toastify";
 
 const styles = makeStyles(theme => ({
   paper: {
@@ -44,6 +45,10 @@ class LoginPage extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+      if (this.state.email.trim() === '' || this.state.password.trim() === ''){
+            alert('Please, fill in all the fields correctly!')
+            return
+        }
 
     this.props.onLogin(this.state);
 

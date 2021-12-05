@@ -25,15 +25,6 @@ const fetchContacts = () => async dispatch => {
   }
 };
 
-// const fetchContacts = () => dispatch => {
-//   dispatch(fetchContactRequest());
-
-//   axios
-//     .get('/contacts')
-//     .then(({ data }) => dispatch(fetchContactSuccess(data)))
-//     .catch(error => dispatch(fetchContactError(error)));
-// };
-
 const addContact =
   ({ name, number }) =>
   dispatch => {

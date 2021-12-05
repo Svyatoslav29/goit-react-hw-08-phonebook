@@ -48,7 +48,8 @@ class ContactsForm extends Component {
     const { name, number } = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}
+      className={style.form}>
         <label htmlFor={this.nameInputId}>
           Name
           <input
