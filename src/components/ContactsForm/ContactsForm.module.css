@@ -1,0 +1,20 @@
+input {
+  width: 200px;
+  height: 40px;
+  padding: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  background-color: rgb(231, 205, 255);
+}
+
+.button {
+  width: auto;
+  height: 30px;
+  color: rgb(255 197 68);
+  background-color: #3f51b5;
+  margin-top: 16px;
+}
